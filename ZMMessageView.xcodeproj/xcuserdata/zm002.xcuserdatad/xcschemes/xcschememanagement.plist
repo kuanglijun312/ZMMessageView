@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ZMMessageView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>3C55A3A21BD71AD300E27563</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C55A3B61BD71AD300E27563</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C55A3C11BD71AD400E27563</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
