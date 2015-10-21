@@ -48,6 +48,23 @@ class ZMMessageView: UIView {
     var heartbeatImageView:UIImageView!
     var msgLabel:UILabel!
     
+    static var appWindow:UIWindow! {
+        get {
+            var applicationKeyWindow:UIWindow! = nil
+            let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
+            for window in frontToBackWindows {
+                if window.windowLevel == UIWindowLevelNormal {
+                    applicationKeyWindow = window;
+                    break
+                }
+            }
+            if applicationKeyWindow == nil {
+                return nil
+            }
+            return applicationKeyWindow
+        }
+    }
+    
     // 参考 https://github.com/hpique/SwiftSingleton
     static let sharedInstance = ZMMessageView()
     
@@ -79,18 +96,10 @@ class ZMMessageView: UIView {
     
     class func show(msg:String,top:CGFloat) {
         // get window
-        var applicationKeyWindow:UIWindow! = nil
-        let frontToBackWindows = UIApplication.sharedApplication().windows//Mark: -x7
-        for window in frontToBackWindows {
-            if window.windowLevel == UIWindowLevelNormal {
-                applicationKeyWindow = window;
-                break
-            }
-        }
-        if applicationKeyWindow == nil {
+        guard let win = appWindow  else {
             return
         }
-        applicationKeyWindow.addSubview(ZMMessageView.sharedInstance)
+        win.addSubview(ZMMessageView.sharedInstance)
         
         ZMMessageView.sharedInstance.msgLabel.text = msg
         
@@ -108,9 +117,10 @@ class ZMMessageView: UIView {
     }
     
     class func dismiss() {
-        if ZMMessageView.sharedInstance.alpha != 0 {
+        if ZMMessageView.sharedInstance.alpha == 1 {
             UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                 ZMMessageView.sharedInstance.alpha = 0
+                ZMMessageView.sharedInstance.removeFromSuperview()
                 }) { (finished) -> Void in
                     
             }

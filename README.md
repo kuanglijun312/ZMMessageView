@@ -11,7 +11,7 @@ a simple message warning(top toast)
 寻找最顶层window:
 
 	var applicationKeyWindow:UIWindow! = nil
-        let frontToBackWindows = UIApplication.sharedApplication().windows//Mark: -x7
+        let frontToBackWindows = UIApplication.sharedApplication().windows.reverse()
         for window in frontToBackWindows {
             if window.windowLevel == UIWindowLevelNormal {
                 applicationKeyWindow = window;
